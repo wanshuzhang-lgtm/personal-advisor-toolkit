@@ -320,7 +320,6 @@ def source_date(record: dict[str, Any]) -> str:
         record.get("published_date")
         or record.get("date")
         or record.get("upload_date")
-        or record.get("captured_date")
         or ""
     )
 
@@ -349,6 +348,7 @@ def build_context_notes(advisor: str) -> Path:
                     "title": title,
                     "type": source_type,
                     "date": source_date(record),
+                    "captured": str(record.get("captured_date") or ""),
                     "url": url,
                     "file": filename,
                     "status": str(record.get("capture_status") or ("text_saved" if text else "metadata_only")),
@@ -376,6 +376,7 @@ def build_context_notes(advisor: str) -> Path:
                 "",
                 f"- Type: {row['type']}",
                 f"- Date: {row['date'] or 'unknown'}",
+                f"- Captured: {row['captured'] or 'unknown'}",
                 f"- Status: {row['status']}",
                 f"- Stored in: {row['file']}",
                 f"- URL: {row['url'] or 'n/a'}",
