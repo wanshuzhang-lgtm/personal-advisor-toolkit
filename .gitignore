@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Generated per-question outputs. Keep source context and scripts in git.
+*/context_pack.md
+*/answer_*.md
+*/_runs/
